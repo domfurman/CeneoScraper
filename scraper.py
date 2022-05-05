@@ -6,6 +6,10 @@ from bs4 import BeautifulSoup
 review_tag = input('Enter review tag: ')
 url = f"https://www.ceneo.pl/{review_tag}#tab=reviews"
 
+#url = input('Enter product's link')
+#num_filter = filter(str.isdigit, url)
+#num_string = "".join(numer_filter)
+
 all_opinions = []
 while(url):
     response = requests.get(url)
@@ -56,4 +60,6 @@ while(url):
         url = None
 with open(f'opinions/{review_tag}.json', 'w', encoding='UTF-8') as jf:
     json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
+#with open(f'opinions/' + 'numeric_string' + '.json', 'w', encoding='UTF-8') as jf:
+#    json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
 #print(recommendation, stars, content, useful, useless, publish_date, purchase_date, sep='\n')
