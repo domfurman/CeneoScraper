@@ -1,12 +1,10 @@
 import json
 import requests
-from pydoc import resolve
-from turtle import st
 from urllib import response
-
 from bs4 import BeautifulSoup
 
-url = "https://www.ceneo.pl/63490289#tab=reviews"
+review_tag = input('Enter review tag: ')
+url = f"https://www.ceneo.pl/{review_tag}#tab=reviews"
 
 all_opinions = []
 while(url):
@@ -56,6 +54,6 @@ while(url):
         url = "https://www.ceneo.pl"+page.select_one('a.pagination__next')['href']
     except TypeError:
         url = None
-with open('opinions/63490289.json', 'w', encoding='UTF-8') as jf:
+with open(f'opinions/{review_tag}.json', 'w', encoding='UTF-8') as jf:
     json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
 #print(recommendation, stars, content, useful, useless, publish_date, purchase_date, sep='\n')
