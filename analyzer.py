@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import numpy as np
 from matplotlib import pyplot as plt
 
 print(*[filename.split(".")[0] for filename in os.listdir("./opinions")], sep='\n')
